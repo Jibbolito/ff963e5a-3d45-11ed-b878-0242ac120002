@@ -45,10 +45,15 @@ function App() {
     console.log(eventsPrep)
   }
 
+  function getSafedIds () {
+    return safedIds;
+  }
+
+
   return (
     <>  
       <Navbar/>
-      {eventsPrep.length > 0 ? <Home events={eventsPrep}/> : <></>}
+      {eventsPrep.length > 0 ? <Home events={eventsPrep} getter={getSafedIds} setter={setSafedIds} /> : <></>}
     </>
     
   );
