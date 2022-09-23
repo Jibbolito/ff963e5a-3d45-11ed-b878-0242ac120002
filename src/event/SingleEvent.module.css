@@ -1,0 +1,41 @@
+.container {
+    border: 2px solid lightslategray;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.name {
+    font-size: larger;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 10%;
+    color: rgb(20, 150, 193);
+    font-weight: bold;
+}
+
+.date {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 10%;
+    font-size: small;
+    color: lightslategray;
+}
+
+.plus {
+    float:right;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.picture {
+    width: 100%;
+}
+
+.pictureFrame {
+    width: 90%;
+    text-align: center;
+}
