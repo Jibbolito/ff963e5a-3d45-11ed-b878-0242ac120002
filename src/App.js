@@ -55,7 +55,7 @@ function App() {
 
   return (
     <>  
-      <Navbar/>
+      <Navbar style={{position:"sticky"}} />
       {eventsPrep.length > 0 ? <Home events={eventsPrep} addSafedId={addSafedId} /> : <></>}
     </>
     
