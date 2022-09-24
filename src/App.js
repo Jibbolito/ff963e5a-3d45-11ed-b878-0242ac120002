@@ -22,13 +22,13 @@ function App() {
   const [ids, setIds] = useState([])
   const [safedIds, setSafedIds] = useState([])
   const [eventsPrep, setEventsPrep] = useState([Event])
+  const [currentDate, setCurrentDate] = useState();
 
   useEffect(() => {
       fetch('https://tlv-events-app.herokuapp.com/events/uk/london')
       .then(response => response.json())
       .then(
         res => {setEvents(res); 
-        console.log(res);
       })
       .catch(err => console.log(err))
       .then(handleIncomingData())
@@ -45,23 +45,26 @@ function App() {
           //since we transformed the string date to Date objects we can compare like this:
           return new Date(b.date) - new Date(a.date);
         });
+        setCurrentDate(array[0].date)
         setEventsPrep(array)
       })
     }
-    console.log(eventsPrep)
+    //console.log(eventsPrep)
   }
 
   function addSafedId (id) {
-    let temp = safedIds;
-    temp.push(id);
-    setSafedIds(temp);
-    console.warn("third")
+    if(!safedIds.includes(id)){
+      let temp = safedIds;
+      temp.push(id);
+      setSafedIds(temp);
+    }
+    console.warn(safedIds)
   }
 
   return (
     <>  
       <Navbar style={{position:"sticky"}} ammount={safedIds.length} />
-      <DateBar/>
+      <DateBar date={currentDate? currentDate:"no date available"} />
       {eventsPrep.length > 0 ? <Home events={eventsPrep} addSafedId={addSafedId} /> : <></>}
     </>
     

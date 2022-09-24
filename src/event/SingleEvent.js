@@ -6,33 +6,33 @@ import mapSymbol from "./assets/map.png"
 
 
 
-const SingleEvent = (props) => {
-    console.log(props.event)
+const SingleEvent = ({event, add}) => {
+//    console.log(event)
     const handleClick = () => {
-        console.warn("once")
+        add(event.id);
     }
 
     return (
         <div className={styles["container"]}>
             <div className={styles['pictureFrame']}>
-              <a href={"https://ra.co" + props.url} >
-                {typeof props.flyerFront !== 'undefined' > 0 ? 
+              <a href={"https://ra.co" + event.url} >
+                {typeof event.flyerFront !== 'undefined' > 0 ? 
                 <img 
                 className={styles['picture']} 
-                src={props.flyerFront ? props.flyerFront : cal} 
+                src={event.flyerFront ? event.flyerFront : cal} 
                 alt="new"  
                 /> 
                 : 
                 <img className={styles['picture']} src={cal}  />}
               </a>
             </div>
-            <div className={styles['name']}>{props.title}</div>
-            <div className={styles['date']}>| Date: {props.date}</div>
+            <div className={styles['name']}>{event.title}</div>
+            <div className={styles['date']}>| Date: {event.date}</div>
             <div className={styles['plus']}>
               <img src={plus} onClick={handleClick} />
             </div>
             <div className={styles['plus']}>
-              <a href={props.location}>
+              <a href={event.location}>
                 <img className={styles['location']} src={mapSymbol} />
               </a>
             </div>

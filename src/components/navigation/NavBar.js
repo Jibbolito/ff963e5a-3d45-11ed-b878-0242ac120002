@@ -1,5 +1,6 @@
 import styles from './Nav.module.css';
 import { Link } from 'react-router-dom';
+import SearchBar from '../searchBar/SearchBar';
 
 
 const Navbar = (props) => {
@@ -10,6 +11,7 @@ const Navbar = (props) => {
         <Link to="/">
           <h2>Upcoming events</h2>
         </Link>
+        <SearchBar placeholder='Search for an event' />
         <Link to="/calendar">
           <div className={styles["nav-bag"]}>
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16">
