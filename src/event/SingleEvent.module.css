@@ -29,6 +29,7 @@
     float:right;
     margin-bottom: 5px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .picture {
@@ -39,4 +40,9 @@
     width: 90%;
     text-align: center;
     margin: 5%;
+    cursor: pointer;
+}
+
+.location{
+    width: 25px;
 }

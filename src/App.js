@@ -7,11 +7,13 @@ import { Home } from './components/home/Home';
 function App() {
 
   class Event {
-    constructor(id, title, date, flyerFront){
+    constructor(id, title, date, flyerFront, url, location){
       this.id = id;
       this.title = title;
       this.date = date;
       this.flyerFront = flyerFront;
+      this.url = url;
+      this.location = location;
     }
   }
 
@@ -29,7 +31,6 @@ function App() {
       })
       .catch(err => console.log(err))
       .then(handleIncomingData())
-      //.then(console.log("was here"))
   }, [])
 
   function handleIncomingData () {
@@ -38,22 +39,24 @@ function App() {
       events.forEach(event => {
         ids.push(event["_id"]);
         let date = new Date(event["date"]);
-        array.push(new Event(event["_id"], event["title"], date.toDateString(), event["flyerFront"]))
+        array.push(new Event(event["_id"], event["title"], date.toDateString(), event["flyerFront"], event["contentUrl"], event["venue"]["direction"]))
         setEventsPrep(array)
       })
     }
-    console.log(eventsPrep)
+    //console.log(eventsPrep)
   }
 
-  function getSafedIds () {
-    return safedIds;
+  function addSafedId (id) {
+    let temp = safedIds;
+    temp.push(id);
+    setSafedIds(temp);
+    console.warn("third")
   }
-
 
   return (
     <>  
       <Navbar/>
-      {eventsPrep.length > 0 ? <Home events={eventsPrep} getter={getSafedIds} setter={setSafedIds} /> : <></>}
+      {eventsPrep.length > 0 ? <Home events={eventsPrep} addSafedId={addSafedId} /> : <></>}
     </>
     
   );
