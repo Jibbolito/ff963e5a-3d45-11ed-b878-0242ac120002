@@ -2,7 +2,7 @@ import styles from './Nav.module.css';
 import { Link } from 'react-router-dom';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
   
   return (
     <>
@@ -17,7 +17,7 @@ const Navbar = () => {
             </svg>
             <span className={styles['bag-quantity']}>
               <span>
-                3
+                {props.ammount}
               </span>
             </span>
           </div>

@@ -19,7 +19,7 @@ function App() {
 
   const [events, setEvents] = useState([])
   const [ids, setIds] = useState([])
-  const [safedIds, setSafedIds] = ([])
+  const [safedIds, setSafedIds] = useState([])
   const [eventsPrep, setEventsPrep] = useState([Event])
 
   useEffect(() => {
@@ -55,7 +55,7 @@ function App() {
 
   return (
     <>  
-      <Navbar style={{position:"sticky"}} />
+      <Navbar style={{position:"sticky"}} ammount={safedIds.length} />
       {eventsPrep.length > 0 ? <Home events={eventsPrep} addSafedId={addSafedId} /> : <></>}
     </>
     
