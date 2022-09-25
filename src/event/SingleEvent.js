@@ -7,7 +7,7 @@ import mapSymbol from "./assets/map.png"
 
 
 const SingleEvent = ({event, add}) => {
-//    console.log(event)
+
     const handleClick = () => {
         add(event._id);
     }
@@ -17,7 +17,7 @@ const SingleEvent = ({event, add}) => {
     return (
         <div className={styles["container"]}>
             <div className={styles['pictureFrame']}>
-              <a href={"https://ra.co" + event.url} >
+              <a href={"https://ra.co" + event.contentUrl} target="_blank" >
                 {typeof event.flyerFront !== 'undefined' > 0 ? 
                 <img 
                 className={styles['picture']} 
@@ -34,7 +34,7 @@ const SingleEvent = ({event, add}) => {
               <img src={plus} onClick={handleClick} />
             </div>
             <div className={styles['plus']}>
-              <a href={event.location}>
+              <a href={event.venue.direction} target="_blank">
                 <img className={styles['location']} src={mapSymbol} />
               </a>
             </div>

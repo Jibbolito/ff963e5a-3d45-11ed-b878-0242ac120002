@@ -4,24 +4,13 @@ import React, { useEffect, useState } from 'react'
 import { Home } from './components/home/Home';
 import DateBar from './components/date/DateBar';
 import Calendar from './components/calendar/Calendar';
+import SearchBar from './components/searchBar/SearchBar';
 
 
 function App() {
 
-  class Event {
-    constructor(id, title, date, flyerFront, url, location){
-      this.id = id;
-      this.title = title;
-      this.date = date;
-      this.flyerFront = flyerFront;
-      this.url = url;
-      this.location = location;
-    }
-  }
-
   const [events, setEvents] = useState(null)
   const [safedIds, setSafedIds] = useState(null)
-  const [eventsPrepCalendar, setEventsPrepCalendar] = useState([Event])
   const [currentDate, setCurrentDate] = useState();
 
 
@@ -36,7 +25,9 @@ function App() {
   function addSafedId (id) {
     if(safedIds !== null){
       if(!safedIds.includes(id)){
-        safedIds.push(id);
+        let temp = safedIds;
+        temp.push(id);
+        setSafedIds(temp)
       }
     } else setSafedIds([id]);  
     console.warn(safedIds)
@@ -44,11 +35,21 @@ function App() {
 
   return (
     <>  
-      <Navbar ammount={safedIds&&safedIds.length} />
+      <Navbar amount={safedIds&&safedIds.length} events={events && events} />
+      {window.location.pathname === ("/" || "/calendar")?
       <DateBar date={currentDate? currentDate:"no date available"} />
+      :
+      <></>
+      }
+      <a href='/search'>
+          <SearchBar placeholder='Search for an event' data={events} />
+        </a>
       {
         window.location.pathname === "/calendar"?
-        safedIds && <Calendar events={events} ids={safedIds} />
+        <Calendar events={events} ids={safedIds} />
+        :
+        window.location.pathname === "/search"?
+        <></>
         :
         events && <Home events={events} addSafedId={addSafedId} />
       }

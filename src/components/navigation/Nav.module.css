@@ -19,7 +19,8 @@ svg{
     width: 100%;
 }
 
-.nav-bar a{
+
+.linkStyling{
     text-decoration: none;
     color: white;
 }
