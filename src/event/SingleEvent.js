@@ -6,7 +6,7 @@ import mapSymbol from "./assets/map.png"
 
 
 
-const SingleEvent = ({event, add}) => {
+const SingleEvent = ({event, add, showPlus}) => {
 
     const handleClick = () => {
         add(event._id);
@@ -30,9 +30,9 @@ const SingleEvent = ({event, add}) => {
             </div>
             <div className={styles['name']}>{event.title}</div>
             <div className={styles['date']}>| Date: {date.toDateString()}</div>
-            <div className={styles['plus']}>
+            {showPlus && <div className={styles['plus']}>
               <img src={plus} onClick={handleClick} />
-            </div>
+            </div>}
             <div className={styles['plus']}>
               <a href={event.venue.direction} target="_blank">
                 <img className={styles['location']} src={mapSymbol} />

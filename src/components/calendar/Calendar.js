@@ -1,7 +1,7 @@
 import React from 'react'
 import SingleEvent from '../../event/SingleEvent';
 
-const Calendar = ({events, ids}) => {
+const Calendar = ({events, ids, getSafedIds}) => {
 
     console.log(events);
     console.log(ids);
@@ -15,6 +15,7 @@ const Calendar = ({events, ids}) => {
             //since we transformed the string date to Date objects we can compare like this:
             return  new Date(a.date) - new Date(b.date);
         });
+        console.log("was here");
     }
 
 

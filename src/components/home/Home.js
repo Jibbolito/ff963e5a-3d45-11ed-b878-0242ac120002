@@ -1,8 +1,10 @@
 import React from 'react'
 import SingleEvent from '../../event/SingleEvent'
+import SearchBar from '../searchBar/SearchBar';
 
 
 export const Home = (props) => {    
+    
     function addSafedId (id){
         props.addSafedId(id);
     }
@@ -13,9 +15,12 @@ export const Home = (props) => {
 
     return (
         <>
-            { props.events && props.events.map((event) => {
+        <a href='/search'>
+            <SearchBar placeholder='Search for an event' data={props.events} add={addSafedId} />
+        </a>
+            { window.location.pathname !== "/search" && props.events && props.events.map((event) => {
               return(
-                 <SingleEvent event={event} add={addSafedId} />
+                 <SingleEvent event={event} add={addSafedId} showPlus={true} />
              )})
             } 
         </>
