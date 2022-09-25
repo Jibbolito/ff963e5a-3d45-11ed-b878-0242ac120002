@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { Home } from './components/home/Home';
 import DateBar from './components/date/DateBar';
 import Calendar from './components/calendar/Calendar';
-import SingleEvent from './event/SingleEvent';
 
 
 function App() {
@@ -21,12 +20,9 @@ function App() {
   }
 
   const [events, setEvents] = useState(null)
-  const [ids, setIds] = useState([])
-  const [safedIds, setSafedIds] = useState([])
-  const [eventsPrep, setEventsPrep] = useState([Event])
+  const [safedIds, setSafedIds] = useState(null)
   const [eventsPrepCalendar, setEventsPrepCalendar] = useState([Event])
   const [currentDate, setCurrentDate] = useState();
-  const [showCalendar, setShowCalendar] = useState(false);
 
 
   
@@ -38,34 +34,21 @@ function App() {
   }, [])
 
   function addSafedId (id) {
-    if(!safedIds.includes(id)){
-      let temp = safedIds;
-      temp.push(id);
-      setSafedIds(temp);
-      const i = events.findIndex(e => e._id === id);
-      let date = new Date(events[i]["date"]);
-      const event = new Event(events[i]["_id"], events[i]["title"], date, events[i]["flyerFront"], events[i]["contentUrl"], events[i]["venue"]["direction"]);
-      if(typeof eventsPrepCalendar){
-        let temp2 = eventsPrepCalendar;
-        temp2.push(event);
-        temp2.sort(function(a,b){
-          //since we transformed the string date to Date objects we can compare like this:
-          return new Date(b.date) - new Date(a.date);
-        });
-        setEventsPrepCalendar(temp2);
-      } else setEventsPrepCalendar(event);
-    }
-    //console.warn(safedIds)
-    console.warn(eventsPrepCalendar)
+    if(safedIds !== null){
+      if(!safedIds.includes(id)){
+        safedIds.push(id);
+      }
+    } else setSafedIds([id]);  
+    console.warn(safedIds)
   }
 
   return (
     <>  
-      <Navbar style={{position:"sticky"}} ammount={safedIds.length} setShowCalendar={setShowCalendar} />
+      <Navbar ammount={safedIds&&safedIds.length} />
       <DateBar date={currentDate? currentDate:"no date available"} />
       {
         window.location.pathname === "/calendar"?
-        <Calendar events={eventsPrepCalendar.slice(1)} />
+        safedIds && <Calendar events={events} ids={safedIds} />
         :
         events && <Home events={events} addSafedId={addSafedId} />
       }

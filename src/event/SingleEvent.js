@@ -9,7 +9,7 @@ import mapSymbol from "./assets/map.png"
 const SingleEvent = ({event, add}) => {
 //    console.log(event)
     const handleClick = () => {
-        add(event.id);
+        add(event._id);
     }
 
     let date = new Date(event.date)
