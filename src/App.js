@@ -3,6 +3,7 @@ import Navbar from './components/navigation/NavBar';
 import React, { useEffect, useState } from 'react'
 import { Home } from './components/home/Home';
 import DateBar from './components/date/DateBar';
+import Calendar from './components/calendar/Calendar';
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
   const [safedIds, setSafedIds] = useState([])
   const [eventsPrep, setEventsPrep] = useState([Event])
   const [currentDate, setCurrentDate] = useState();
+  const [showCalendar, setShowCalendar] = useState(false);
+
 
   useEffect(() => {
       fetch('https://tlv-events-app.herokuapp.com/events/uk/london')
@@ -60,12 +63,18 @@ function App() {
     }
     console.warn(safedIds)
   }
+  console.warn(window.location.pathname)
 
   return (
     <>  
-      <Navbar style={{position:"sticky"}} ammount={safedIds.length} />
+      <Navbar style={{position:"sticky"}} ammount={safedIds.length} setShowCalendar={setShowCalendar} />
       <DateBar date={currentDate? currentDate:"no date available"} />
-      {eventsPrep.length > 0 ? <Home events={eventsPrep} addSafedId={addSafedId} /> : <></>}
+      {eventsPrep.length > 0 ? 
+        window.location.pathname === "/calendar"?
+        <Calendar />
+        :
+        <Home events={eventsPrep} addSafedId={addSafedId} />
+      : <></>}
     </>
     
   );
