@@ -1,9 +1,16 @@
 import React from 'react'
+import SingleEvent from '../../event/SingleEvent';
 
-const Calendar = () => {
-  return (
-    <h1>Calendar goes on ufbwieabj kecavnoj</h1>
-  )
+const Calendar = (props) => {
+    return (
+        <>
+            { props.events && props.events.map((event) => {
+              return(
+                 <SingleEvent event={event}  />
+             )})
+            } 
+        </>
+    );
 }
 
 export default Calendar

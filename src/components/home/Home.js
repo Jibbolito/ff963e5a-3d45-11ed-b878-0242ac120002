@@ -1,14 +1,15 @@
 import React from 'react'
 import SingleEvent from '../../event/SingleEvent'
-//import DateBar from '../date/DateBar'
 
 
-export const Home = (props) => {
-    //console.log(props.events)
-    
+export const Home = (props) => {    
     function addSafedId (id){
         props.addSafedId(id);
     }
+    props.events.sort(function(a,b){
+        //since we transformed the string date to Date objects we can compare like this:
+        return  new Date(a.date) - new Date(b.date);
+    });
 
     return (
         <>

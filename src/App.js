@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Home } from './components/home/Home';
 import DateBar from './components/date/DateBar';
 import Calendar from './components/calendar/Calendar';
+import SingleEvent from './event/SingleEvent';
 
 
 function App() {
@@ -19,62 +20,55 @@ function App() {
     }
   }
 
-  const [events, setEvents] = useState([])
+  const [events, setEvents] = useState(null)
   const [ids, setIds] = useState([])
   const [safedIds, setSafedIds] = useState([])
   const [eventsPrep, setEventsPrep] = useState([Event])
+  const [eventsPrepCalendar, setEventsPrepCalendar] = useState([Event])
   const [currentDate, setCurrentDate] = useState();
   const [showCalendar, setShowCalendar] = useState(false);
 
 
+  
   useEffect(() => {
       fetch('https://tlv-events-app.herokuapp.com/events/uk/london')
       .then(response => response.json())
-      .then(
-        res => {setEvents(res); 
-      })
+      .then(res => {setEvents(res);})
       .catch(err => console.log(err))
-      .then(handleIncomingData())
   }, [])
-
-  function handleIncomingData () {
-    let array = [];
-    if(events.length > 0) {
-      events.forEach(event => {
-        ids.push(event["_id"]);
-        let date = new Date(event["date"]);
-        array.push(new Event(event["_id"], event["title"], date.toDateString(), event["flyerFront"], event["contentUrl"], event["venue"]["direction"]))
-        array.sort(function(a,b){
-          //since we transformed the string date to Date objects we can compare like this:
-          return new Date(b.date) - new Date(a.date);
-        });
-        setCurrentDate(array[0].date)
-        setEventsPrep(array)
-      })
-    }
-    //console.log(eventsPrep)
-  }
 
   function addSafedId (id) {
     if(!safedIds.includes(id)){
       let temp = safedIds;
       temp.push(id);
       setSafedIds(temp);
+      const i = events.findIndex(e => e._id === id);
+      let date = new Date(events[i]["date"]);
+      const event = new Event(events[i]["_id"], events[i]["title"], date, events[i]["flyerFront"], events[i]["contentUrl"], events[i]["venue"]["direction"]);
+      if(typeof eventsPrepCalendar){
+        let temp2 = eventsPrepCalendar;
+        temp2.push(event);
+        temp2.sort(function(a,b){
+          //since we transformed the string date to Date objects we can compare like this:
+          return new Date(b.date) - new Date(a.date);
+        });
+        setEventsPrepCalendar(temp2);
+      } else setEventsPrepCalendar(event);
     }
-    console.warn(safedIds)
+    //console.warn(safedIds)
+    console.warn(eventsPrepCalendar)
   }
-  console.warn(window.location.pathname)
 
   return (
     <>  
       <Navbar style={{position:"sticky"}} ammount={safedIds.length} setShowCalendar={setShowCalendar} />
       <DateBar date={currentDate? currentDate:"no date available"} />
-      {eventsPrep.length > 0 ? 
+      {
         window.location.pathname === "/calendar"?
-        <Calendar />
+        <Calendar events={eventsPrepCalendar.slice(1)} />
         :
-        <Home events={eventsPrep} addSafedId={addSafedId} />
-      : <></>}
+        events && <Home events={events} addSafedId={addSafedId} />
+      }
     </>
     
   );

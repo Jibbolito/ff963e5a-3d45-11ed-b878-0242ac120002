@@ -12,6 +12,8 @@ const SingleEvent = ({event, add}) => {
         add(event.id);
     }
 
+    let date = new Date(event.date)
+
     return (
         <div className={styles["container"]}>
             <div className={styles['pictureFrame']}>
@@ -27,7 +29,7 @@ const SingleEvent = ({event, add}) => {
               </a>
             </div>
             <div className={styles['name']}>{event.title}</div>
-            <div className={styles['date']}>| Date: {event.date}</div>
+            <div className={styles['date']}>| Date: {date.toDateString()}</div>
             <div className={styles['plus']}>
               <img src={plus} onClick={handleClick} />
             </div>
