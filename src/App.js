@@ -12,6 +12,7 @@ function App() {
 
   const [events, setEvents] = useState(null);
   const [safedEvents, setSafedEvents] = useState([]);
+  console.log(safedEvents);
 
 
 
@@ -24,12 +25,11 @@ function App() {
 
   function addSafedId(id) {
     let event = events.find(element => element._id === id)
-    let temp = safedEvents;
+    let temp = [...safedEvents];    
     if (!temp.includes(event)) {
       temp.push(event)
     }
     setSafedEvents(temp);
-    console.log(safedEvents);
   }
 
 
@@ -39,7 +39,7 @@ function App() {
         <Navbar amount={safedEvents && safedEvents.length} events={events && events} />
         <Routes>
           <Route path='/' element={events && <Home events={events} addSafedId={addSafedId} />} />
-          <Route path='/calendar' element={safedEvents && <Calendar events={safedEvents} />} />
+          <Route path='/calendar' element={safedEvents.length && <Calendar events={safedEvents} />} />
           <Route path='/search' element={<SearchBar placeholder='Search for an event' data={events} />} />
         </Routes>
       </Router>
