@@ -1,7 +1,6 @@
 import Navbar from './components/navigation/NavBar';
 import React, { useEffect, useState } from 'react'
 import { Home } from './components/home/Home';
-import DateBar from './components/date/DateBar';
 import Calendar from './components/calendar/Calendar';
 import SearchBar from './components/searchBar/SearchBar';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
