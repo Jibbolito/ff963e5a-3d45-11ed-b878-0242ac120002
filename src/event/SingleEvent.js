@@ -7,13 +7,16 @@ import mapSymbol from "./assets/map.png"
 
 
 const SingleEvent = ({ event, add, showPlus }) => {
+
+  const [show, setShow] = useState(true);
+
   //adds a saved event
   const handleClick = () => {
     add(event._id);
     setShow(false);
   }
+  
 
-  const [show, setShow] = useState(true);
 
   let date = new Date(event.date)
 
