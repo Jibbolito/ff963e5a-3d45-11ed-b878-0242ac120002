@@ -2,7 +2,7 @@ import styles from './Nav.module.css';
 import { Link } from 'react-router-dom';
 
 
-const Navbar = ({ amount, events }) => {
+const Navbar = ({ amount }) => {
 
   return (
     <>

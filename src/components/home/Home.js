@@ -1,6 +1,7 @@
 import React from 'react'
 import SingleEvent from '../../event/SingleEvent'
 import SearchBar from '../searchBar/SearchBar';
+import { Link } from 'react-router-dom';
 
 
 export const Home = (props) => {
@@ -17,9 +18,9 @@ export const Home = (props) => {
     return (
         <>
             {/* used to get rid of events when user clicks on search*/}
-            <a href='/search'>
+            <Link to='/search'>
                 <SearchBar placeholder='Search for an event' data={props.events} add={addSafedId} />
-            </a>
+            </Link>
             {window.location.pathname !== "/search" && props.events && props.events.map((event) => {
                 return (
                     <SingleEvent event={event} add={addSafedId} showPlus={true} />
