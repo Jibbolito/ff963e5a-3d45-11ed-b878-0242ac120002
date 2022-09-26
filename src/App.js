@@ -14,8 +14,6 @@ function App() {
   const [safedEvents, setSafedEvents] = useState([]);
   console.log(safedEvents);
 
-
-
   //call to fetch from API
   useEffect(() => {
     fetch('https://tlv-events-app.herokuapp.com/events/uk/london')
@@ -32,7 +30,6 @@ function App() {
       setSafedEvents(prev=>[... safedEvents,event])
     }
   }
-
 
   return (
     <>

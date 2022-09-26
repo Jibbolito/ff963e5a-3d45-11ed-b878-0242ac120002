@@ -36,6 +36,7 @@ const SingleEvent = ({ event, add, showPlus }) => {
               <img className={styles['picture']} src={cal} />}
           </a>
         </div>
+        
         <div className={styles['name']}>{event.title}</div>
         <div className={styles['date']}>| Date: {date.toDateString()}</div>
         {showPlus && <div className={styles['plus']}>
