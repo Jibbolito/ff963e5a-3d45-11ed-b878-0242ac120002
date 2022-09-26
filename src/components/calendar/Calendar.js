@@ -1,33 +1,25 @@
 import React from 'react'
 import SingleEvent from '../../event/SingleEvent';
 
-const Calendar = ({events, ids, getSafedIds}) => {
+const Calendar = ({ events }) => {
 
     console.log(events);
-    console.log(ids);
 
-    let temp = [];
-    if (events !== null && ids !== null){
-        temp = events.filter(event => {
-            ids.includes(event._id)
-        })
-        temp.sort(function(a,b){
+    if (events !== null) {
+        events.sort(function (a, b) {
             //since we transformed the string date to Date objects we can compare like this:
-            return  new Date(a.date) - new Date(b.date);
+            return new Date(a.date) - new Date(b.date);
         });
-        console.log("was here");
     }
-
-
-    console.log(temp);
 
     return (
         <>
-            { temp && temp.map((event) => {
-              return(
-                 <SingleEvent event={event}  />
-             )})
-            } 
+            {events && events.map((event) => {
+                return (
+                    <SingleEvent event={event} />
+                )
+            })
+            }
         </>
     );
 }

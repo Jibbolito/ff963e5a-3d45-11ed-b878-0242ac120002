@@ -6,40 +6,40 @@ import mapSymbol from "./assets/map.png"
 
 
 
-const SingleEvent = ({event, add, showPlus}) => {
+const SingleEvent = ({ event, add, showPlus }) => {
 
-    const handleClick = () => {
-        add(event._id);
-    }
+  const handleClick = () => {
+    add(event._id);
+  }
 
-    let date = new Date(event.date)
+  let date = new Date(event.date)
 
-    return (
-        <div className={styles["container"]}>
-            <div className={styles['pictureFrame']}>
-              <a href={"https://ra.co" + event.contentUrl} target="_blank" >
-                {typeof event.flyerFront !== 'undefined' > 0 ? 
-                <img 
-                className={styles['picture']} 
-                src={event.flyerFront ? event.flyerFront : cal} 
-                alt="new"  
-                /> 
-                : 
-                <img className={styles['picture']} src={cal}  />}
-              </a>
-            </div>
-            <div className={styles['name']}>{event.title}</div>
-            <div className={styles['date']}>| Date: {date.toDateString()}</div>
-            {showPlus && <div className={styles['plus']}>
-              <img src={plus} onClick={handleClick} />
-            </div>}
-            <div className={styles['plus']}>
-              <a href={event.venue.direction} target="_blank">
-                <img className={styles['location']} src={mapSymbol} />
-              </a>
-            </div>
-        </div>
-      )
+  return (
+    <div className={styles["container"]}>
+      <div className={styles['pictureFrame']}>
+        <a href={"https://ra.co" + event.contentUrl} target="_blank" >
+          {typeof event.flyerFront !== 'undefined' > 0 ?
+            <img
+              className={styles['picture']}
+              src={event.flyerFront ? event.flyerFront : cal}
+              alt="new"
+            />
+            :
+            <img className={styles['picture']} src={cal} />}
+        </a>
+      </div>
+      <div className={styles['name']}>{event.title}</div>
+      <div className={styles['date']}>| Date: {date.toDateString()}</div>
+      {showPlus && <div className={styles['plus']}>
+        <img src={plus} onClick={handleClick} />
+      </div>}
+      <div className={styles['plus']}>
+        <a href={event.venue.direction} target="_blank">
+          <img className={styles['location']} src={mapSymbol} />
+        </a>
+      </div>
+    </div>
+  )
 }
 
 export default SingleEvent

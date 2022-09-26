@@ -10,65 +10,41 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
 
-  const [events, setEvents] = useState(null)
-  const [safedIds, setSafedIds] = useState(null)
-  const [currentDate, setCurrentDate] = useState();
+  const [events, setEvents] = useState(null);
+  const [safedEvents, setSafedEvents] = useState([]);
 
 
-  
+
   useEffect(() => {
-      fetch('https://tlv-events-app.herokuapp.com/events/uk/london')
+    fetch('https://tlv-events-app.herokuapp.com/events/uk/london')
       .then(response => response.json())
-      .then(res => {setEvents(res);})
+      .then(res => { setEvents(res); })
       .catch(err => console.log(err))
   }, [])
 
-  function addSafedId (id) {
-    if(safedIds !== null){
-      if(!safedIds.includes(id)){
-        let temp = safedIds;
-        temp.push(id);
-        setSafedIds(temp)
-      }
-    } else setSafedIds([id]);  
-    console.log (safedIds)
+  function addSafedId(id) {
+    let event = events.find(element => element._id === id)
+    let temp = safedEvents;
+    if (!temp.includes(event)) {
+      temp.push(event)
+    }
+    setSafedEvents(temp);
+    console.log(safedEvents);
   }
 
-  function getSafedIds () {
-    return safedIds;
-  }
 
   return (
-    <> 
+    <>
       <Router>
-        <Navbar amount={safedIds&&safedIds.length} events={events && events} />
+        <Navbar amount={safedEvents && safedEvents.length} events={events && events} />
         <Routes>
-          <Route path='/' element={events && <Home events={events} addSafedId={addSafedId} /> }/>
-          <Route path='/calendar' element={safedIds&&<Calendar events={events} ids={safedIds} />} />
-          <Route path='/search' element={<SearchBar placeholder='Search for an event' data={events} />}/>
+          <Route path='/' element={events && <Home events={events} addSafedId={addSafedId} />} />
+          <Route path='/calendar' element={safedEvents && <Calendar events={safedEvents} />} />
+          <Route path='/search' element={<SearchBar placeholder='Search for an event' data={events} />} />
         </Routes>
-        
-        {/*<Navbar amount={safedIds&&safedIds.length} events={events && events} />
-        {window.location.pathname === ("/" || "/calendar")?
-        <DateBar date={currentDate? currentDate:"no date available"} />
-        :
-        <></>
-        }
-        <a href='/search'>
-            <SearchBar placeholder='Search for an event' data={events} />
-        </a>
-        {
-          window.location.pathname === "/calendar"?
-          safedIds&&<Calendar events={events} ids={safedIds} />
-          :
-          window.location.pathname === "/search"?
-          <></>
-          :
-          events && <Home events={events} addSafedId={addSafedId} getSafedIds={getSafedIds} />
-        */}
-      </Router> 
+      </Router>
     </>
-    
+
   );
 }
 

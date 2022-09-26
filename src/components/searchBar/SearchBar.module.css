@@ -1,25 +1,23 @@
-
-
 .searchInputs {
-    margin-top: 10px;
-    margin-right: 0px;
-    display: flex;
-  }
-  
-  .search input {
-    background-color: white;
-    border: 0;
-    border-radius: 2px;
-    font-size: 18px;
-    padding: 15px;
-    height: 30px;
-    width: 200px;
-    border: 2px solid lightslategray;
-    margin-left: 65%;
-    text-align: center;
-  }
-  
-  .searchIcon {
+  margin-top: 10px;
+  margin-right: 0px;
+  display: flex;
+}
+
+.search input {
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  font-size: 18px;
+  padding: 15px;
+  height: 30px;
+  width: 200px;
+  border: 2px solid lightslategray;
+  margin-left: 65%;
+  text-align: center;
+}
+
+.searchIcon {
   height: 30px;
   background-color: white;
   display: grid;
@@ -27,51 +25,52 @@
   margin-left: 10px;
 }
 
-  input:focus {
-    outline: none;
-  }
-  
-  .dataResult {
-    margin-top: 20px;
-    width: 300px;
-    height: 200px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    overflow: hidden;
-    overflow-y: auto;
-  }
-  
-  .dataResult::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .dataResult  {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    color: black;
-    margin-top: 100px;
-  }
-  
-  .dataItem p {
-    margin-left: 10px;
-  }
-  a {
-    text-decoration: none;
-  }
-  
-  a:hover {
-    background-color: lightgrey;
-  }
-  
-  #clearBtn {
-    cursor: pointer;
-  }
+input:focus {
+  outline: none;
+}
 
-  .searchResults{
-    color: lightslategray;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-top: 10px;
-  }
+.dataResult {
+  margin-top: 20px;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.dataResult::-webkit-scrollbar {
+  display: none;
+}
+
+.dataResult {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+  margin-top: 100px;
+}
+
+.dataItem p {
+  margin-left: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: lightgrey;
+}
+
+#clearBtn {
+  cursor: pointer;
+}
+
+.searchResults {
+  color: lightslategray;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 10px;
+}

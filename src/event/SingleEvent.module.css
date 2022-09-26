@@ -10,7 +10,7 @@
 
 .name {
     font-size: larger;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-left: 10%;
     color: rgb(20, 150, 193);
     font-weight: bold;
@@ -19,14 +19,14 @@
 .date {
     margin-top: 5px;
     margin-bottom: 5px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-left: 10%;
     font-size: small;
     color: lightslategray;
 }
 
 .plus {
-    float:right;
+    float: right;
     margin-bottom: 5px;
     margin-right: 10px;
     cursor: pointer;
@@ -43,6 +43,6 @@
     cursor: pointer;
 }
 
-.location{
+.location {
     width: 25px;
 }

@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap');
 
-svg{
+svg {
     color: white;
 }
 
-*{
-    padding:0;
+* {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-.nav-bar{
+.nav-bar {
     height: 70px;
     background-color: lightslategray;
     display: flex;
@@ -20,22 +20,22 @@ svg{
 }
 
 
-.linkStyling{
+.linkStyling {
     text-decoration: none;
     color: white;
 }
 
-.nav-bar h2{
+.nav-bar h2 {
     font-size: 30px;
     margin-left: 10px;
 }
 
-.nav-bag{
+.nav-bag {
     display: flex;
     align-items: center;
 }
 
-.bag-quantity{
+.bag-quantity {
     display: flex;
     align-items: center;
     justify-content: center;
