@@ -7,7 +7,7 @@ import mapSymbol from "./assets/map.png"
 
 
 const SingleEvent = ({ event, add, showPlus }) => {
-
+  //adds a saved event
   const handleClick = () => {
     add(event._id);
   }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from "./SearchBar.module.css"
 import SingleEvent from '../../event/SingleEvent'
 
+//inspired by https://github.com/machadop1407/React-Search-Bar
 
 const SearchBar = ({ placeholder, data }) => {
 

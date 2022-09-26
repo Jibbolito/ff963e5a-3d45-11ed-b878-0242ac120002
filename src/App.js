@@ -16,6 +16,7 @@ function App() {
 
 
 
+  //call to fetch from API
   useEffect(() => {
     fetch('https://tlv-events-app.herokuapp.com/events/uk/london')
       .then(response => response.json())
@@ -23,13 +24,13 @@ function App() {
       .catch(err => console.log(err))
   }, [])
 
+  //used to add an safed event
   function addSafedId(id) {
     let event = events.find(element => element._id === id)
     let temp = [...safedEvents];    
     if (!temp.includes(event)) {
-      temp.push(event)
+      setSafedEvents(prev=>[... safedEvents,event])
     }
-    setSafedEvents(temp);
   }
 
 

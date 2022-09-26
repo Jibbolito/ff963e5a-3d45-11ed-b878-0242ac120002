@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from "./DateBar.module.css"
 
+
+//unfinished component that should display the date
 const DateBar = (props) => {
 
 

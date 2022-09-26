@@ -5,6 +5,7 @@ import SearchBar from '../searchBar/SearchBar';
 
 export const Home = (props) => {
 
+    //passed down to SingleEvent.js //adds a saved event
     function addSafedId(id) {
         props.addSafedId(id);
     }
@@ -15,6 +16,7 @@ export const Home = (props) => {
 
     return (
         <>
+            {/* used to get rid of events when user clicks on search*/}
             <a href='/search'>
                 <SearchBar placeholder='Search for an event' data={props.events} add={addSafedId} />
             </a>
