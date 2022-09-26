@@ -4,3 +4,7 @@ To start the app:
 3. run npm start in terminal
 4. you can find the app on localhost:3000
 
+
+I do not know how to implement the functionality of dates being displayed in one of the corners, but that is why I am applying as a *Junior* deverloper.
+
+Thanks for the chance to show you my skills and enjoy my project. :)
